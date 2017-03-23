@@ -14,11 +14,14 @@ public class GameManager : MonoBehaviour {
 	private Spawner spawner;
 	public int score;
 	public Text scoreText;
+	public Text endScore;
+	public GameObject startScreen;
 
 
 	void Awake() {
 		score = 0;
 		UpdateScore ();
+		startScreen = GameObject.FindWithTag ("Start Screen");
 		floor = GameObject.Find ("Foreground");
 		spawner = GameObject.Find ("Spawner").GetComponent<Spawner> ();
 		timeManager = GetComponent<TimeManager> ();
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour {
 		floor.transform.position = pos;
 
 		spawner.active = false;
+
 		Time.timeScale = 0;
 	}
 	
@@ -53,6 +57,8 @@ public class GameManager : MonoBehaviour {
 	void OnPlayerKilled(){
 		print ("player killed");
 		spawner.active = false;
+		endScore.text = scoreText.text;
+		startScreen.SetActive(true);
 
 		var playerDestroyScript = player.GetComponent<RecycleGameObject> ();
 		playerDestroyScript.DestroyCallback -= OnPlayerKilled;
@@ -75,7 +81,9 @@ public class GameManager : MonoBehaviour {
 	void ResetGame() {
 		score = 0;
 		UpdateScore ();
+		startScreen.SetActive(false);
 		spawner.active = true;
+
 
 		player = GameObjectUtil.Instantiate(playerPrefab, new Vector3(0, (Screen.height/PixelPerfectCamera.pixelsToUnits) / 2 + 100, 0));
 	
