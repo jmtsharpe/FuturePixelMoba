@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 		playerDestroyScript.DestroyCallback -= OnPlayerKilled;
 
 		player.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-		timeManager.ManipulateTime (0, 5.5f);
+		timeManager.ManipulateTime(0, 0.1f);
 		gameStarted = false;
 	}
 
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour {
 		spawner.active = true;
 
 
-		player = GameObjectUtil.Instantiate(playerPrefab, new Vector3(0, (Screen.height/PixelPerfectCamera.pixelsToUnits) / 2 + 100, 0));
+		player = GameObjectUtil.Instantiate(playerPrefab, new Vector3(0, (Screen.height/PixelPerfectCamera.pixelsToUnits) / 10, 0));
 	
 		var playerDestroyScript = player.GetComponent<RecycleGameObject> ();
 		playerDestroyScript.DestroyCallback += OnPlayerKilled;

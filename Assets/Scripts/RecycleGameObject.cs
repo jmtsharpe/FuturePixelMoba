@@ -30,6 +30,10 @@ public class RecycleGameObject : MonoBehaviour {
 
 
 	public void Restart(){
+		HasHealth health = gameObject.GetComponent<HasHealth> ();
+		if (health) {
+			health.Restart();
+		}
 		gameObject.SetActive (true);
 
 		foreach (var component in recycleComponents) {

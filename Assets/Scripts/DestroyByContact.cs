@@ -16,10 +16,22 @@ public class DestroyByContact : MonoBehaviour {
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other) {
-		if (gameObject.tag == "Zombie") {
-			gameManager.Upscore (1);
+		if (other.GetComponent<FollowTarget> ().target == gameObject) {
+			
+			HasHealth health = gameObject.GetComponent<HasHealth> ();
+			if (health != null) {
+			
+				health.TakeDamage (other.GetComponent<Damage> ().GetDamage ());
+			}
+			GameObjectUtil.Destroy (other.gameObject);
+		} else if (other.CompareTag ("Bomb")) {
+			Debug.Log ("EXPLOSION SHOULD HAPPEN");
+			other.GetComponent<Explode> ().BlowUp ();
+		} else if (other.CompareTag ("Explosion")) {
+			HasHealth health = gameObject.GetComponent<HasHealth> ();
+			if (health != null) {
+				health.TakeDamage (other.GetComponent<Damage> ().GetDamage ());
+			}
 		}
-		GameObjectUtil.Destroy (other.gameObject);
-		GameObjectUtil.Destroy (gameObject);
 	}
 }

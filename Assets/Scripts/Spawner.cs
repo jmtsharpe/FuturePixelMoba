@@ -2,15 +2,14 @@
 using System.Collections;
 
 public class Spawner : MonoBehaviour {
-
+	private float speedUp = 1; 
 	public GameObject[] prefabs;
-	public float delay = 2.0f;
+	public float delay = 30f;
 	public bool active = true;
-	public Vector2 delayRange = new Vector2(1, 2);
+	public float shortDelay = 1f;
 
 	// Use this for initialization
 	void Start () {
-		ResetDelay ();
 		StartCoroutine (EnemyGenerator ());
 	}
 
@@ -19,18 +18,21 @@ public class Spawner : MonoBehaviour {
 		yield return new WaitForSeconds (delay);
 
 		if (active) {
-			var newTransform = transform;
+			for (var i = 0; i < 5; i++) {
 
-			GameObjectUtil.Instantiate(prefabs[Random.Range(0, prefabs.Length)], newTransform.position);
-			ResetDelay();
+				Vector3 temp = new Vector3 (transform.position.x, (Screen.height / PixelPerfectCamera.pixelsToUnits) / 4, 0);
+				var newTransform = transform;
+				newTransform.position = temp;
+
+				GameObjectUtil.Instantiate (prefabs [Random.Range (0, prefabs.Length)], newTransform.position);
+				yield return new WaitForSeconds (shortDelay);
+			}
 		}
 
 		StartCoroutine (EnemyGenerator ());
 
 	}
 
-	void ResetDelay(){
-		delay = Random.Range (delayRange.x, delayRange.y);
-	}
+
 
 }

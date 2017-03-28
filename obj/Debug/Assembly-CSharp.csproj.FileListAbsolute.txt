@@ -27,3 +27,32 @@ C:\Users\MB-Team\Documents\Lynda_Unity_5_ET\Ex_Files_Unity_5_2D_EssT\Exercise Fi
 C:\Users\MB-Team\Documents\Lynda_Unity_5_ET\Ex_Files_Unity_5_2D_EssT\Exercise Files\ExerciseFiles\ch05\05_04\SuperZombieRunner\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\MB-Team\Documents\Lynda_Unity_5_ET\Ex_Files_Unity_5_2D_EssT\Exercise Files\ExerciseFiles\ch05\05_04\SuperZombieRunner\obj\Debug\Assembly-CSharp.dll
 C:\Users\MB-Team\Documents\Lynda_Unity_5_ET\Ex_Files_Unity_5_2D_EssT\Exercise Files\ExerciseFiles\ch05\05_04\SuperZombieRunner\obj\Debug\Assembly-CSharp.pdb
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEditor.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.VR.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.xml
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEditor.xml
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.xml
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\MB-Team\Desktop\KillZombies\Temp\bin\Debug\UnityEngine.VR.xml
+C:\Users\MB-Team\Desktop\KillZombies\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\MB-Team\Desktop\KillZombies\obj\Debug\Assembly-CSharp.dll
+C:\Users\MB-Team\Desktop\KillZombies\obj\Debug\Assembly-CSharp.pdb
