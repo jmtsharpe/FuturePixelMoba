@@ -6,11 +6,6 @@ public class Zombie : MonoBehaviour {
 
 	public Vector2 colliderOffset = Vector2.zero;
 
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	public void Restart(){
 		var renderer = GetComponent<SpriteRenderer> ();
@@ -21,10 +16,6 @@ public class Zombie : MonoBehaviour {
 
 		collider.size = size;
 		collider.offset = new Vector2 (-colliderOffset.x, collider.size.y / 2 + colliderOffset.y);
-
-	}
-
-	public void Shutdown(){
 
 	}
 }

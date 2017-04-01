@@ -11,15 +11,16 @@ public class MouseToMove : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetMouseButton (0)) {
-			Debug.Log ("Trying to move");
 			targetPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			targetPosition.z = transform.position.z;
 			transform.position = Vector3.MoveTowards (transform.position, targetPosition, Time.deltaTime * speed);
-		} else if (Input.GetMouseButton(1)) {
+		} else if (Input.GetMouseButton (1)) {
 			targetPosition = transform.position;
+		} else {
+			transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
 		}
 
-		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
+
 	}
 
 }

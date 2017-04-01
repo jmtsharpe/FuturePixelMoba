@@ -15,12 +15,12 @@ public class Spawner : MonoBehaviour {
 
 	IEnumerator EnemyGenerator(){
 
-		yield return new WaitForSeconds (delay);
+
 
 		if (active) {
 			for (var i = 0; i < 5; i++) {
 
-				Vector3 temp = new Vector3 (transform.position.x, (Screen.height / PixelPerfectCamera.pixelsToUnits) / 4, 0);
+				Vector3 temp = new Vector3 (transform.position.x, (Screen.height / PixelPerfectCamera.pixelsToUnits) / 10, 0);
 				var newTransform = transform;
 				newTransform.position = temp;
 
@@ -28,6 +28,8 @@ public class Spawner : MonoBehaviour {
 				yield return new WaitForSeconds (shortDelay);
 			}
 		}
+
+		yield return new WaitForSeconds (delay);
 
 		StartCoroutine (EnemyGenerator ());
 

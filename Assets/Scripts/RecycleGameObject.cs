@@ -34,6 +34,16 @@ public class RecycleGameObject : MonoBehaviour {
 		if (health) {
 			health.Restart();
 		}
+
+		FollowTarget follow = gameObject.GetComponent<FollowTarget> ();
+		if (follow) {
+			follow.Restart();
+		}
+
+		EngageAtRange engage = gameObject.GetComponent<EngageAtRange> ();
+		if (engage) {
+			engage.Restart();
+		}
 		gameObject.SetActive (true);
 
 		foreach (var component in recycleComponents) {

@@ -15,8 +15,9 @@ public class DestroyByContact : MonoBehaviour {
 		
 		}
 	}
+
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.GetComponent<FollowTarget> ().target == gameObject) {
+		if (other.GetComponent<MissileSeekTarget> ().target == gameObject) {
 			
 			HasHealth health = gameObject.GetComponent<HasHealth> ();
 			if (health != null) {

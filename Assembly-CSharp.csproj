@@ -46,6 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EngageAtRange.cs" />
+     <Compile Include="Assets\GotToObjective.cs" />
+     <Compile Include="Assets\MoveOnEdge.cs" />
      <Compile Include="Assets\Scripts\AnimatedTexture.cs" />
      <Compile Include="Assets\Scripts\AttackInRange.cs" />
      <Compile Include="Assets\Scripts\BombToss.cs" />
@@ -65,7 +68,9 @@
      <Compile Include="Assets\Scripts\InputState.cs" />
      <Compile Include="Assets\Scripts\InstantVelocity.cs" />
      <Compile Include="Assets\Scripts\Jump.cs" />
+     <Compile Include="Assets\Scripts\MissileSeekTarget.cs" />
      <Compile Include="Assets\Scripts\MouseToMove.cs" />
+     <Compile Include="Assets\Scripts\MoveToObjective.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
      <Compile Include="Assets\Scripts\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\Obstacle.cs" />
@@ -79,6 +84,7 @@
      <Compile Include="Assets\Scripts\TiledBackground.cs" />
      <Compile Include="Assets\Scripts\TimeManager.cs" />
      <Compile Include="Assets\Scripts\Tower.cs" />
+     <Compile Include="Assets\Scripts\TowerAttack.cs" />
      <Compile Include="Assets\Scripts\Zombie.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

@@ -7,7 +7,8 @@ public class Shoot : MonoBehaviour {
 	public GameObject bulletPrefab;
 
 	private Camera screen;
-	private WaitForSeconds shortWait = new WaitForSeconds(0.25f);
+
+	private WaitForSeconds shortWait;
 	private Vector2 playerPosition;
 	private Vector2 playerSize;
 	private GameObject bullet;
@@ -15,6 +16,7 @@ public class Shoot : MonoBehaviour {
 	private GameObject followTarget;
 
 	public float attackRange;
+	public float attackDelay;
 
 	void Awake() {
 		playerSize = GetComponent<BoxCollider2D> ().size;
@@ -23,53 +25,50 @@ public class Shoot : MonoBehaviour {
 
 	void Start(){
 		screen = Camera.main;
+		shortWait = new WaitForSeconds(attackDelay);
 	}
 
-	public void Fire(){
-		playerPosition = GetComponent<Transform> ().position;
-		StopCoroutine("FireRoutine");
-		StartCoroutine("FireRoutine");
-	}
 
-	IEnumerator FireRoutine() {
+
+	public void Fire() {
+		shooting = true;
 		playerPosition = GetComponent<Transform> ().position;
 		Vector2 target = screen.ScreenToWorldPoint( new Vector2(Input.mousePosition.x, Input.mousePosition.y) );
 		Vector2 myPos = new Vector2(playerPosition.x + (playerSize.x /2) + 5 , playerPosition.y);
 		Vector2 direction = target - myPos;
 
 		bullet = GameObjectUtil.Instantiate(bulletPrefab, new Vector3(playerPosition.x + (playerSize.x /2) + 5 , playerPosition.y, 0));
-		bullet.GetComponent<FollowTarget>().SetTarget (followTarget);
-		shooting = true;
+		bullet.GetComponent<MissileSeekTarget>().SetTarget (followTarget);
+		StopCoroutine ("AttackPause");
+		StartCoroutine ("AttackPause");
+
+	}
+
+	IEnumerator AttackPause(){
 		yield return shortWait;
 		shooting = false;
 	}
 
+
 	// Update is called once per frame
 	void Update () {
 		
-		if (Input.GetMouseButtonDown(1))
+		if (Input.GetMouseButtonDown(1) && !shooting)
 		{
 			
 			float distance = findDistance (gameObject.transform.position, Camera.main.ScreenToWorldPoint (Input.mousePosition));
 			if(distance < attackRange){
-			Debug.Log("Mouse is down");
-			var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-			var hit = Physics2D.Raycast(ray.origin, ray.direction * attackRange);
-			if (hit) 
-			{
-				var hitTarget = hit.transform.gameObject.tag;
-				if (hitTarget == "Zombie" || hitTarget == "Tower")
+				var ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+				var hit = Physics2D.Raycast(ray.origin, ray.direction * attackRange);
+				if (hit) 
 				{
-					followTarget = hit.transform.gameObject;
-					Fire ();
-					Debug.Log ("It's working!");
-				} else {
-					Debug.Log ("nopz");
+					var hitTarget = hit.transform.gameObject.tag;
+					if (hitTarget.Contains("Red"))
+					{
+						followTarget = hit.transform.gameObject;
+						Fire ();
+					}
 				}
-			} else {
-				Debug.Log("No hit");
-			}
-			Debug.Log("Mouse is down");
 			}
 
 		} 
@@ -80,7 +79,6 @@ public class Shoot : MonoBehaviour {
 		float yDist = objPos.y - mousePos.y;
 
 		float result = Mathf.Sqrt ((xDist * xDist) + (yDist * yDist));
-		Debug.Log (result);
 		return result;
 	}
 }

@@ -4,52 +4,61 @@ using UnityEngine;
 
 public class AttackInRange : MonoBehaviour {
 
-	public GameObject projectilePrefab;
-
 	private Camera screen;
 	private WaitForSeconds shortWait;
 	private Vector2 objectPosition;
-	private Vector2 playerSize;
-	public float speed = 5.0f;
+	private Vector2 objectSize;
 	private GameObject projectile;
-	public bool shooting;
-	private GameObject followTarget;
+	public GameObject followTarget;
 
+	public GameObject projectilePrefab;
+	public bool attacking;
 	public float AttackDelay;
 	public float AttackRange;
+	public string enemy;
 
-	// Use this for initialization
 	void Start () {
 		shortWait = new WaitForSeconds(AttackDelay);
 	}
+		
 
 	public void Fire(){
+		attacking = true;
 		objectPosition = GetComponent<Transform> ().position;
 		StopCoroutine("FireRoutine");
 		StartCoroutine("FireRoutine");
 	}
 
 	IEnumerator FireRoutine() {
+		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2(0, 0);
 		objectPosition = GetComponent<Transform> ().position;
 		Vector2 myPos = new Vector2(objectPosition.x + (objectPosition.x /2) + 5 , objectPosition.y);
 
-		projectile = GameObjectUtil.Instantiate(projectilePrefab, new Vector3(objectPosition.x + (playerSize.x /2) + 5 , objectPosition.y, 0));
-		projectile.GetComponent<FollowTarget>().SetTarget (followTarget);
-		shooting = true;
+		projectile = GameObjectUtil.Instantiate(projectilePrefab, new Vector3(objectPosition.x, objectPosition.y, 0));
+		projectile.GetComponent<MissileSeekTarget>().SetTarget (followTarget);
 		yield return shortWait;
-		shooting = false;
+		attacking = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		var hit = Physics2D.OverlapCircle(transform.position, AttackRange);
-		if (hit && !(shooting)) 
-		{
-			if (hit.transform.gameObject.tag == "Player")
-			{
-				followTarget = hit.transform.gameObject;
+		if (followTarget) {
+			if (!followTarget.activeSelf) {
+				followTarget = null;
+			} else if (!attacking) {
 				Fire ();
+			}
+		} else {
+			Debug.Log (gameObject + " hit nothing yet");
+			var hit = Physics2D.OverlapCircle (transform.position, AttackRange, 0, 0, -2);
+			if (hit && !(attacking)) {
+				Debug.Log (gameObject + " hit " + hit);
+				if (hit.gameObject.tag.Contains (enemy)) {
+					followTarget = hit.gameObject;
+					Fire ();
+				}
 			}
 		}
 	}
+
 }
