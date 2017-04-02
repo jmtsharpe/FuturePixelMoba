@@ -1,6 +1,7 @@
 # FuturePixelMoba
 Future Pixel Moba is a top down 2D action game built on the Unity engine in C#. 
-![Screenshot](http://imgur.com/a/3zOyL)
+
+![Screenshot](http://i.imgur.com/n60oJ7o.png)
 
 ## To-Do
 
